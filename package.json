@@ -1,0 +1,26 @@
+{
+  "name": "gulp-gl2js",
+  "version": "0.1.0",
+  "description": "Gulp task that converts a .glsl files to Javascript files under custom variables",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "html",
+    "js",
+    "gulpplugin",
+    "gulpfriendly",
+    "webgl"
+  ],
+  "author": "Ben Farrell",
+  "license": "MIT",
+  "dependencies": {
+    "gulp-util": "^3.0.6",
+    "through2": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bengfarrell/gulp-gl2js.git"
+  }
+}
