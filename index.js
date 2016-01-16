@@ -18,6 +18,10 @@ module.exports = function(outfile, opt) {
         opt.assignto = 'x';
     }
 
+    if (opt.module) {
+        opt.modulename = 'default';
+    }
+
     if (!outfile) {
        outfile = 'shaders';
     }
@@ -63,7 +67,11 @@ module.exports = function(outfile, opt) {
             path: path.join(__dirname, './' + outfile + '.js')
         });
 
-        file.contents = new Buffer(opt.assignto + ' = ' + JSON.stringify(shaders, null, 2) + ';');
+        if (opt.module) {
+            file.contents = new Buffer('export ' + opt.modulename + JSON.stringify(shaders, null, 2));
+        } else {
+            file.contents = new Buffer(opt.assignto + ' = ' + JSON.stringify(shaders, null, 2) + ';');
+        }
         this.push(file);
         cb();
     }
