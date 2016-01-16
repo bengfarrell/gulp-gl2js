@@ -68,7 +68,7 @@ module.exports = function(outfile, opt) {
         });
 
         if (opt.module) {
-            file.contents = new Buffer('export ' + opt.modulename + JSON.stringify(shaders, null, 2));
+            file.contents = new Buffer('export ' + opt.modulename + ' ' + JSON.stringify(shaders, null, 2));
         } else {
             file.contents = new Buffer(opt.assignto + ' = ' + JSON.stringify(shaders, null, 2) + ';');
         }
