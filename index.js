@@ -14,6 +14,10 @@ module.exports = function(outfile, opt) {
         opt = {}
     }
 
+    if (!opt.extension) {
+        opt.extension = 'js';
+    }
+
     if (!opt.assignto) {
         opt.assignto = 'x';
     }
@@ -64,7 +68,7 @@ module.exports = function(outfile, opt) {
         var file = new gutil.File({
             base: path.join(__dirname, './'),
             cwd: __dirname,
-            path: path.join(__dirname, './' + outfile + '.js')
+            path: path.join(__dirname, './' + outfile + '.' + opt.extension)
         });
 
         if (opt.module) {
