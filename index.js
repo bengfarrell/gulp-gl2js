@@ -56,16 +56,19 @@ module.exports = function(outfile, opt) {
     };
 
     function endStream(cb) {
-        var file = new gutil.File({
-            base: path.join(__dirname, './'),
-            cwd: __dirname,
-            path: path.join(__dirname, './' + outfile + '.json')
-        });
+        var file;
+        if (opt.exportJSON) {
+            file = new gutil.File({
+                base: path.join(__dirname, './'),
+                cwd: __dirname,
+                path: path.join(__dirname, './' + outfile + '.json')
+            });
 
-        file.contents = new Buffer(JSON.stringify(shaders, null, 2));
-        this.push(file);
+            file.contents = new Buffer(JSON.stringify(shaders, null, 2));
+            this.push(file);
+        }
 
-        var file = new gutil.File({
+        file = new gutil.File({
             base: path.join(__dirname, './'),
             cwd: __dirname,
             path: path.join(__dirname, './' + outfile + '.' + opt.extension)
