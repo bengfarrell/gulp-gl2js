@@ -32,6 +32,7 @@ module.exports = function(outfile, opt) {
 
     function makeJS(file, enc, cb) {
         var shadertxt = String(file.contents);
+        shadertxt = shadertxt.replace(/\/\*[\s\S]*?\*\/|([^:]|^)\/\/.*$/gm, '');
         shadertxt = shadertxt.replace(/\r?\n/g, ' ');
         shadertxt = shadertxt.replace(/\t/g, ' ');
 
@@ -53,7 +54,7 @@ module.exports = function(outfile, opt) {
         }
         shaders[shadername][shadertype] = shadertxt;
         cb();
-    };
+    }
 
     function endStream(cb) {
         var file;
